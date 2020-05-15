@@ -9,27 +9,30 @@ on:
    branches:
      - master
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # jobs starting, single job called "composer install"
 
 jobs:
-  composer install:
- 
-# type of runner job will run on
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-# steps represent a sequence of tasks that are part of the job
-
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # runs a single command using the runners shell
-    - name: composer install
-      
-    # checks out the specific repo w/ custom action
-    - uses: nanasess/composer-installer-action@master
-    
-    # runs install command for composer
-    - run: composer install
-    
-    # checks the version
-    - name: check version
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
-    - run: composer -V
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: sudo apt install composer
+
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+        echo Composer should be installed now
+        
+    # Runs a command to show the composer version installed
+    - name: composer version
+      run: |
+        sudo composer -V
