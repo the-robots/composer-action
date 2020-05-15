@@ -1,5 +1,16 @@
-name: "Setup container"
-description: "Docker container action that installs and uses the composer command"
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+# ./.github/workflows/composer-container.yml
+
+name: Composer php
+
+on: 
+ push:
+   branches:
+     - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nick-zh/composer-php@master
+        with:
+          action: 'install -oa'
