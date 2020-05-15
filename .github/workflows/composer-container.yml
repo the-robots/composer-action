@@ -1,4 +1,4 @@
-name: "test composer action"
+name: "Setup container"
 description: "Docker container action that installs and uses the composer command"
 runs:
   using: 'docker'
