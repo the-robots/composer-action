@@ -1,5 +1,5 @@
-name: "test docker action"
-description: "Docker container action that echoes a string to standard output"
+name: "test composer action"
+description: "Docker container action that installs and uses the composer command"
 runs:
   using: 'docker'
   image: 'Dockerfile'
