@@ -11,6 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: nick-zh/composer-php@master
-        with:
-          action: 'whereis composer'
+    - name: composer install
+    - uses: actions/checkout@master
+    - uses: nanasess/composer-installer-action@master
+    - run: composer install
+      name: check version
+    - run: composer -V
