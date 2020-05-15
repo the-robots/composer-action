@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: nick-zh/composer-php@master
         with:
-          action: 'install -oa'
+          action: 'whereis composer'
