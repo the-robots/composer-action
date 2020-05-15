@@ -20,9 +20,6 @@ jobs:
 # steps represent a sequence of tasks that are part of the job
 
     steps:
-    # checks out your repo under $GITHUB_WORKSPACE, so the job can access it
-    - uses: actions/checkout@v2
-       
     # runs a single command using the runners shell
     - name: composer install
       
@@ -34,4 +31,5 @@ jobs:
     
     # checks the version
     - name: check version
+    - uses: actions/checkout@v2
     - run: composer -V
