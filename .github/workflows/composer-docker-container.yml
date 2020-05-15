@@ -1,5 +1,6 @@
 # ./.github/workflows/composer-docker-container.yml
 # This will publish a Docker image to DockerHub when a release is made
+# Overkill for this test but hey, I'm learning!
 
 name: Docker Image CI
 
@@ -25,3 +26,16 @@ jobs:
     run: docker build . --file Dockerfile --tag melscoop/bionic-composer:latest
   - name: Push the latest Docker image
     run: docker push melscoop/bionic-composer:latest
+
+# Now for the caching attempt.....
+
+  - name: Get Composer Cache Directory
+    id: composer-cache
+    run: |
+     echo "::set-output name=dir::$(composer config cache-files-dir)"
+  - uses: actions/cache@v1
+    with:
+      path: ${{ steps.composer-cache.outputs.dir }}
+      key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+      restore-keys: |
+       ${{ runner.os }}-composer-
