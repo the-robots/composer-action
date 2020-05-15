@@ -1,5 +1,5 @@
   
-# ./.github/workflows/dockerimage.yml
+# ./.github/workflows/composer-docker-container.yml
 
 name: Docker Image CI
 
