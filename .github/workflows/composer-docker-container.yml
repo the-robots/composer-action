@@ -1,5 +1,6 @@
   
 # ./.github/workflows/composer-docker-container.yml
+# This will publish a Docker image to DockerHub when a release is made
 
 name: Docker Image CI
 
