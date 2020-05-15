@@ -18,7 +18,7 @@ jobs:
     id: vars
     run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
   - name: Build the tagged Docker image
-    run: docker build . --file Dockerfile --tag melscoop/bionic:${{steps.vars.outputs.tag}}
+    run: docker build . --file Dockerfile --tag melscoop/bionic-composer:${{steps.vars.outputs.tag}}
   - name: Push the tagged Docker image
     run: docker push melscoop/bionic-composer:${{steps.vars.outputs.tag}}
   - name: Build the latest Docker image
