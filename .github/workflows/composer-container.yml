@@ -40,7 +40,7 @@ jobs:
       id: composer-cache
       run: |
        echo "::set-output name=dir::$(composer config cache-files-dir)"
-    - uses: actions/cache@v1.2
+    - uses: actions/cache@v1
       with:
        path: .
        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
