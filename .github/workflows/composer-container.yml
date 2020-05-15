@@ -1,19 +1,37 @@
 # ./.github/workflows/composer-container.yml
+# This is a basic workflow to install composer and test the version
 
-name: Composer php
+name: Composer install test
 
+# triggered only when a commit is added to the master branch
 on: 
  push:
    branches:
      - master
 
+# jobs starting, single job called "composer install"
+
 jobs:
-  build:
+  composer install:
+ 
+# type of runner job will run on
     runs-on: ubuntu-latest
+
+# steps represent a sequence of tasks that are part of the job
+
     steps:
+    # checks out your repo under $GITHUB_WORKSPACE, so the job can access it
+    - uses: actions/checkout@v2
+       
+    # runs a single command using the runners shell
     - name: composer install
-    - uses: actions/checkout@master
+      
+    # checks out the specific repo w/ custom action
     - uses: nanasess/composer-installer-action@master
+    
+    # runs install command for composer
     - run: composer install
-      name: check version
+    
+    # checks the version
+    - name: check version
     - run: composer -V
