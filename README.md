@@ -1,2 +1,4 @@
-# docker-action
+# composer-action
+
+Testing Actions caching w/ Composer
 
